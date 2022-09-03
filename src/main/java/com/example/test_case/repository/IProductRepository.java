@@ -10,22 +10,19 @@ import java.util.List;
 
 @Repository
 public interface IProductRepository extends JpaRepository<Product, Long> {
+    //Trello #2
+    List<Product> findAll();
+
+    //Trello #8
     @Query(value = "select * from product where name like: name", nativeQuery = true)
     List<Product> findAllByNameContaining(@Param("name") String name);
-    @Query(value = "select * from category where id like: id", nativeQuery = true)
-    List<Product> findAllByCategory(Long id);
 
-    @Query(value = "select * from brand where id like: id", nativeQuery = true)
-    List<Product> findAllByBrand(Long id);
-
+    //Trello #3
     @Query(value = "select * from product where id like: id", nativeQuery = true)
     List<Product> findProductById(Long id);
 
-    @Query(value = "select * from product where brand_id like: brand_id", nativeQuery = true)
-    List<Product> findProductByBrandId(Long id);
-
-    @Query(value = "select * from product where category_id like: category_id", nativeQuery = true)
-    List<Product> findProductByCategoryId(Long id);
-
+    //Trello #4
+    @Query(value = "Select * from product where brand_id =:idb and category_id =:idc", nativeQuery = true)
+    List<Product> findProductByFilter(@Param("idb") Long idb,@Param("idc") Long idc);
 
 }

@@ -9,6 +9,7 @@ import java.util.List;
 
 @Repository
 public interface IOrdersRepository extends JpaRepository<Long, Orders> {
+    //Trello #18
     @Query(value = "select * from orders where id like: id", nativeQuery = true)
-    List<Orders> findAllByOrders (Long id);
+    List<Orders> findOrdersById (Long id);
 }

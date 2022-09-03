@@ -9,6 +9,7 @@ import java.util.List;
 
 @Repository
 public interface ICategoryRepository extends JpaRepository<Category, Long> {
+    //Trello #1
     @Query(value = "select * from category", nativeQuery = true)
     List<Category> findAllCategory(Long id);
 }

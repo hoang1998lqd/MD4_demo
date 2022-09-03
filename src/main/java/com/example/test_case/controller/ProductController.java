@@ -36,23 +36,6 @@ public class ProductController {
         return new ResponseEntity<>(categoryService.findAll(), HttpStatus.OK);
     }
 
-    @GetMapping(("id_categories/{category_id}"))
-    public ResponseEntity<List<Product>> findByCategories(@PathVariable("category_id") long id) {
-        List<Product> productList = productService.findByCategory(id);
-        if (productList.isEmpty()) {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        }
-        return new ResponseEntity<>(productList, HttpStatus.OK);
-    }
-
-    @GetMapping(("id_brands/{brand_id}"))
-    public ResponseEntity<List<Product>> findByBrands(@PathVariable ("brand_id") long id) {
-        List<Product> productList = productService.findByBrand(id);
-        if (productList.isEmpty()) {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        }
-        return new ResponseEntity<>(productList, HttpStatus.OK);
-    }
 
     @GetMapping("/{id}")
     public ResponseEntity<Product> detail(@PathVariable("id") Long id) {
