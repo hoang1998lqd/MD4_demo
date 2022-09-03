@@ -15,7 +15,7 @@ public interface IOrdersRepository extends JpaRepository<Long, Orders> {
     @Query(value = "select * from orders where id like: id", nativeQuery = true)
     List<Orders> findAllOrdersById (Long id);
 
-    @Query(value = "select * from orders where date_ship =: dsh and date_order =: dor", nativeQuery = true)
-    List<Orders> findAllOrdersByDateContaining(@Param("dsh")LocalDateTime dsh, @Param("dor")LocalDateTime dor);
+    @Query(value = "select * from orders where date_order =: dor", nativeQuery = true)
+    List<Orders> findAllOrdersByDateContaining(@Param("dor")LocalDateTime dor);
 
 }
