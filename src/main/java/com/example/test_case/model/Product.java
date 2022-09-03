@@ -1,14 +1,10 @@
 package com.example.test_case.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import lombok.*;
 
 import javax.persistence.*;
-import javax.persistence.criteria.CriteriaBuilder;
-import java.util.HashSet;
-import java.util.Set;
 
 @Entity
 @Getter
@@ -40,9 +36,11 @@ public class Product {
 
     private int discount;
 
+//    @JsonIgnore
     @ManyToOne
     private Brand brand;
 
+//    @JsonIgnore
     @ManyToOne
     private Category category;
 

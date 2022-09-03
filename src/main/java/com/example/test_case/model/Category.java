@@ -1,9 +1,7 @@
 package com.example.test_case.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.*;
 
 import javax.persistence.*;
 import java.util.HashSet;
@@ -22,6 +20,7 @@ public class Category {
     @Column(nullable = false, unique = true)
     private String name;
 
+    @JsonIgnore
     @ManyToMany(fetch = FetchType.LAZY, cascade =  CascadeType.ALL, mappedBy = "categories")
     private Set<Brand> brands = new HashSet<>();
 }
