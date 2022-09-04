@@ -10,11 +10,9 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 @Repository
-public interface IOrdersRepository extends JpaRepository<Long, Orders> {
-    //Trello #18
-    @Query(value = "select * from orders where id like: id", nativeQuery = true)
-    List<Orders> findAllOrdersById (Long id);
+public interface IOrdersRepository extends JpaRepository<Orders, Long> {
 
+    //Trello #20
     @Query(value = "select * from orders where date_order =: dor", nativeQuery = true)
     List<Orders> findAllOrdersByDateContaining(@Param("dor")LocalDateTime dor);
 

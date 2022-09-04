@@ -1,5 +1,6 @@
 package com.example.test_case.controller;
 
+import com.example.test_case.model.Brand;
 import com.example.test_case.model.Category;
 import com.example.test_case.model.Product;
 import com.example.test_case.service.IBrandService;
@@ -26,18 +27,25 @@ public class ProductController {
     @Autowired
     public IBrandService brandService;
 
-    @GetMapping
-    public ResponseEntity<List<Product>> findAll() {
-        return new ResponseEntity<>(productService.findAll(), HttpStatus.OK);
-    }
-
+    //Trello #1
     @GetMapping("/categories")
     public ResponseEntity<List<Category>> findAllCategories() {
         return new ResponseEntity<>(categoryService.findAll(), HttpStatus.OK);
     }
 
+    @GetMapping("/brands")
+    public ResponseEntity<List<Brand>> findAllBrands() {
+        return new ResponseEntity<>(brandService.findAll(), HttpStatus.OK);
+    }
 
-    @GetMapping("/{id}")
+    //Trello #2
+    @GetMapping("/products")
+    public ResponseEntity<List<Product>> findAllProducts() {
+        return new ResponseEntity<>(productService.findAll(), HttpStatus.OK);
+    }
+
+    //Trello #3
+    @GetMapping("products/{id}")
     public ResponseEntity<Product> detail(@PathVariable("id") Long id) {
         Optional<Product> productOptional = productService.findById(id);
         if (productOptional.isPresent()) {
@@ -46,12 +54,23 @@ public class ProductController {
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
-    @PostMapping
+    //Trello #4
+    @GetMapping("/products/search/{search}")
+    public ResponseEntity<?> findProductByFilter(@PathVariable("search") Long id) {
+        List<Product> productList = productService.findProductByFilter(id);
+        if (productList.isEmpty()) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<>(productList, HttpStatus.OK);
+    }
+
+    //CRUD
+    @PostMapping("/products/create")
     public ResponseEntity<Product> createProduct(@RequestBody Product product) {
         return new ResponseEntity<>(productService.save(product), HttpStatus.OK);
     }
-
-    @PutMapping
+    //CRUD
+    @PutMapping("/products/update")
     public ResponseEntity<Product> updateProduct(@RequestBody Product product) {
         Optional<Product> productOptional = productService.findById(product.getId());
         if (productOptional.isPresent()) {
@@ -59,8 +78,8 @@ public class ProductController {
         }
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
-
-    @DeleteMapping("/{id}")
+    //CRUD
+    @DeleteMapping("/products/delete/{id}")
     public ResponseEntity<Void> deleteProduct(@PathVariable("id") Long id) {
         Optional<Product> productOptional = productService.findById(id);
         if (productOptional.isPresent()) {
@@ -69,7 +88,8 @@ public class ProductController {
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
-    @GetMapping("search/{search}")
+    //Trello #8
+    @GetMapping("/products/search/{search}")
     public ResponseEntity<?> findByName(@PathVariable("search") String name) {
         List<Product> productList = productService.findByName(name);
         if (productList.isEmpty()) {
@@ -77,5 +97,4 @@ public class ProductController {
         }
         return new ResponseEntity<>(productList, HttpStatus.OK);
     }
-
 }

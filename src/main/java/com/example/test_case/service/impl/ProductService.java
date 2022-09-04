@@ -11,6 +11,10 @@ import java.util.Optional;
 
 @Service
 public class ProductService implements IProductService {
+    @Override
+    public List<Product> findProductByFilter(Long id) {
+        return productRepository.findProductByFilter(id, id);
+    }
 
     @Autowired
     public IProductRepository productRepository;
