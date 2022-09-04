@@ -1,6 +1,5 @@
 package com.example.test_case.model;
 
-
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -14,14 +13,12 @@ import javax.persistence.*;
 @AllArgsConstructor
 @NoArgsConstructor
 public class ImageURL {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(length = 400)
+    @Column(length = 1000)
     private String name;
-
     @ManyToOne
     private Product product;
 }

@@ -18,6 +18,7 @@ public class BrandService implements IBrandService {
         return brandRepository.findAll();
     }
 
+
     @Override
     public Optional<Brand> findById(Long id) {
         return brandRepository.findById(id);
@@ -31,5 +32,10 @@ public class BrandService implements IBrandService {
     @Override
     public void delete(Long id) {
         brandRepository.deleteById(id);
+    }
+
+    @Override
+    public List<Brand> findBrandsByCategoryId(Long id) {
+        return brandRepository.findBrandsByCategoryId(id);
     }
 }

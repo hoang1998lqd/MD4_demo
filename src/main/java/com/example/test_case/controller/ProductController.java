@@ -1,7 +1,9 @@
 package com.example.test_case.controller;
 
+import com.example.test_case.model.ImageURL;
 import com.example.test_case.model.Product;
 import com.example.test_case.service.IProductService;
+import com.example.test_case.service.ImageURLGet;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -18,13 +20,32 @@ import java.util.Optional;
 public class ProductController {
     @Autowired
     private IProductService iProduct;
+
+    @Autowired
+    private ImageURLGet imageURLGet;
     @GetMapping
     private ResponseEntity<Page<Product>> findAll(@PageableDefault(value = 2) Pageable pageable ) {
         return new ResponseEntity<>(iProduct.findAll(pageable), HttpStatus.OK);
     }
 
+    @GetMapping("/new-product")
+    private ResponseEntity<?> findIdNewProduct() {
+        return new ResponseEntity<>(iProduct.findIdNewProduct(), HttpStatus.OK);
+    }
+
+    @GetMapping("/image")
+    private ResponseEntity<?> findAllImage() {
+        return new ResponseEntity<>(imageURLGet.findAll(), HttpStatus.OK);
+    }
+
+
+    @PostMapping("/imageURL")
+    private ResponseEntity<ImageURL> saveImage(@RequestBody ImageURL imageURL){
+        return new ResponseEntity<>(imageURLGet.save(imageURL),HttpStatus.CREATED);
+    }
+
     @PostMapping
-    private ResponseEntity<Product> createHuman(@RequestBody Product product){
+    private ResponseEntity<Product> createProduct(@RequestBody Product product){
         return new ResponseEntity<>(iProduct.save(product),HttpStatus.CREATED);
     }
 
