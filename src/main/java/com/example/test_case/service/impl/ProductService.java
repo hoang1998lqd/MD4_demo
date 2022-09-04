@@ -4,6 +4,8 @@ import com.example.test_case.model.Product;
 import com.example.test_case.repository.IProductRepository;
 import com.example.test_case.service.IProductService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -16,8 +18,8 @@ public class ProductService implements IProductService {
     public IProductRepository productRepository;
 
     @Override
-    public List<Product> findAll() {
-        return productRepository.findAll();
+    public Page<Product> findAll(Pageable pageable) {
+        return productRepository.findAll(pageable);
     }
 
     @Override
@@ -36,8 +38,8 @@ public class ProductService implements IProductService {
     }
 
     @Override
-    public List<Product> findByName(String name) {
-        return productRepository.findAllByNameContaining(name);
+    public Page<Product> findByName(String name, Pageable pageable) {
+        return productRepository.findAllByNameContaining(name, pageable);
     }
 
 }

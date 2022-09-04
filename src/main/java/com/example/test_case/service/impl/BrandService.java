@@ -4,6 +4,8 @@ import com.example.test_case.model.Brand;
 import com.example.test_case.repository.IBrandRepository;
 import com.example.test_case.service.IBrandService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -15,8 +17,8 @@ public class BrandService implements IBrandService {
     public IBrandRepository brandRepository;
 
     @Override
-    public List<Brand> findAll() {
-        return brandRepository.findAll();
+    public Page<Brand> findAll(Pageable pageable) {
+        return brandRepository.findAll(pageable);
     }
 
     @Override

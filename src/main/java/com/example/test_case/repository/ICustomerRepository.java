@@ -1,6 +1,8 @@
 package com.example.test_case.repository;
 
 import com.example.test_case.model.Customer;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
@@ -12,10 +14,10 @@ public interface ICustomerRepository extends JpaRepository<Long, Customer> {
 
 //Trello #11
 @Query(value = "select * from customer where id like: id", nativeQuery = true)
-    List<Customer> findAllByCustomer(Long id);
+Page<Customer> findAllByCustomer(Long id, Pageable pageable);
 
 //Trello #10
 @Query(value = "select * from customer where phone_number like: phone_number", nativeQuery = true)
-    List<Customer> findCustomerByPhone(String phoneNumber);
+    Page<Customer> findCustomerByPhone(String phoneNumber,Pageable pageable);
 
 }
