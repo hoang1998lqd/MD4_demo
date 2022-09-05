@@ -21,7 +21,5 @@ public class Role {
     @Column(nullable = false, unique = true)
     private String name;
 
-    @ManyToOne(optional = false)
-    @JoinColumn(name = "role_id", nullable = false)
-    private Role role;
+
 }

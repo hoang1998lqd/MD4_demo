@@ -5,8 +5,6 @@ import com.example.test_case.model.Product;
 import com.example.test_case.repository.ProductRepository;
 import com.example.test_case.service.IProductService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -39,7 +37,12 @@ public class ProductService implements IProductService {
 
     @Override
     public void delete(Long id) {
-        productRepository.deleteById(id);
+        Optional<Product> productOptional = productRepository.findById(id);
+        if (productOptional.isPresent()){
+            Product product = productOptional.get();
+            product.setStatus(0);
+            productRepository.save(product);
+        }
     }
 
     @Override

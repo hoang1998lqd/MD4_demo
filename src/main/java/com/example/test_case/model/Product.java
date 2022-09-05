@@ -1,12 +1,9 @@
 package com.example.test_case.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.*;
 
 import javax.persistence.*;
-import java.util.HashSet;
-import java.util.Set;
+
 
 @Entity
 @Getter
@@ -38,16 +35,6 @@ public class Product {
 
     private int discount;
 
-//    @OneToMany(mappedBy = "product", cascade =  CascadeType.ALL)
-//    @JsonManagedReference
-//    private Set<ImageURL> imageURLS = new HashSet<>();
-//    public Set<ImageURL> getImageURLS() {
-//        return imageURLS;
-//    }
-//
-//    public void setImageURLS(Set<ImageURL> imageURLS) {
-//        this.imageURLS = imageURLS;
-//    }
 
     //    @JsonIgnore
     @ManyToOne
