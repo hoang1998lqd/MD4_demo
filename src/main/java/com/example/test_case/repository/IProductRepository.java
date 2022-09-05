@@ -12,11 +12,14 @@ import java.util.List;
 public interface IProductRepository extends JpaRepository<Product, Long> {
 
     //Trello #8
-    @Query(value = "select * from product where name like: name", nativeQuery = true)
     List<Product> findAllByNameContaining(@Param("name") String name);
 
     //Trello #4
     @Query(value = "Select * from product where brand_id =:idb and category_id =:idc", nativeQuery = true)
     List<Product> findProductByFilter(@Param("idb") Long idb,@Param("idc") Long idc);
 
+    List<Product> findAllByBrand_Id(Long id);
+    List<Product> findAllByCategory_Id(Long id);
+    List<Product> findAllByColor(String color);
+    List<Product> findAllByPrice(double price);
 }

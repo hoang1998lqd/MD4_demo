@@ -31,6 +31,7 @@ function createProduct() {
         processData: false,
         type: "POST",
         url: "http//localhost:8083/products",
+        data: JSON.stringify(product),
         success: function () {
             $('#myModal').modal('hide');
         }

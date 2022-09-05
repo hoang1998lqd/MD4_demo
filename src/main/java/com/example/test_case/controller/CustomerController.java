@@ -17,13 +17,13 @@ public class CustomerController {
     public ICustomerService customerService;
 
     //Trello #11
-    @GetMapping("/customers")
+    @GetMapping
     public ResponseEntity<List<Customer>> findAllCustomers() {
         return new ResponseEntity<>(customerService.findAll(), HttpStatus.OK);
     }
 
     //Trello #10
-    @GetMapping("/customers/search/{search}")
+    @GetMapping("/search/{search}")
     public ResponseEntity<?> findCustomerByPhoneNumber(@PathVariable("search") String phoneNumber) {
         List<Customer> customers = customerService.findByPhoneNumber(phoneNumber);
         if (customers.isEmpty()) {

@@ -28,5 +28,4 @@ public class Brand {
         inverseJoinColumns = {@JoinColumn(name = "category_id")}
     )
     private Set<Category> categories = new HashSet<>();
-
 }

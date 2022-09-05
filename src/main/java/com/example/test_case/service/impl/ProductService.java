@@ -11,13 +11,17 @@ import java.util.Optional;
 
 @Service
 public class ProductService implements IProductService {
+    @Autowired
+    public IProductRepository productRepository;
     @Override
     public List<Product> findProductByFilter(Long id) {
         return productRepository.findProductByFilter(id, id);
     }
 
-    @Autowired
-    public IProductRepository productRepository;
+    @Override
+    public List<Product> findAllByBrand_Id(Long id) {
+        return productRepository.findAllByBrand_Id(id);
+    }
 
     @Override
     public List<Product> findAll() {
@@ -44,4 +48,19 @@ public class ProductService implements IProductService {
         return productRepository.findAllByNameContaining(name);
     }
 
+
+    @Override
+    public List<Product> findAllByCategory_Id(Long id) {
+        return productRepository.findAllByCategory_Id(id);
+    }
+
+    @Override
+    public List<Product> findAllByColor(String color) {
+        return productRepository.findAllByColor(color);
+    }
+
+    @Override
+    public List<Product> findAllByPrice(double price) {
+        return productRepository.findAllByPrice(price);
+    }
 }

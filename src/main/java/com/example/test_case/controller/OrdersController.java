@@ -19,13 +19,13 @@ public class OrdersController {
     public IOrdersService ordersService;
 
     //Trello #18
-    @GetMapping("/orders")
+    @GetMapping
     public ResponseEntity<List<Orders>> findAllOrders() {
         return new ResponseEntity<>(ordersService.findAll(), HttpStatus.OK);
     }
 
     //Trello #20
-    @GetMapping("/orders/search/{search}")
+    @GetMapping("/search/{search}")
     public ResponseEntity<?> findOrdersByDate(@PathVariable("search")LocalDateTime date_order) {
         List<Orders> ordersList = ordersService.findOrdersByDate(date_order);
         if (ordersList.isEmpty()) {
@@ -35,7 +35,7 @@ public class OrdersController {
     }
 
     //Trello #24
-    @DeleteMapping("/orders/delete/{id}")
+    @DeleteMapping("/delete/{id}")
     public ResponseEntity<Void> deleteOrders(@PathVariable("id") Long id) {
         Optional<Orders> ordersOptional = ordersService.findById(id);
         if (ordersOptional.isPresent()) {

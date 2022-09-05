@@ -17,13 +17,13 @@ public class Order_detailController {
     @Autowired
     public IOrder_detailService order_detailService;
 
-    @GetMapping("/order-detail")
+    @GetMapping
     public ResponseEntity<List<Order_detail>> findAllOrder_details() {
         return new ResponseEntity<>(order_detailService.findAll(), HttpStatus.OK);
     }
 
     //Trello #19
-    @GetMapping("/order-detail/{id}")
+    @GetMapping("/{id}")
     public ResponseEntity<Order_detail> detail(@PathVariable("id") Long id) {
         Optional<Order_detail> order_detailOptional = order_detailService.findById(id);
         if (order_detailOptional.isPresent()) {
