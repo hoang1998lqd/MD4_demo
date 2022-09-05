@@ -1,5 +1,6 @@
 package com.example.test_case.controller;
 
+import com.example.test_case.model.DTO.DTOProduct;
 import com.example.test_case.model.ImageURL;
 import com.example.test_case.model.Product;
 import com.example.test_case.service.IProductService;
@@ -12,6 +13,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -24,8 +26,8 @@ public class ProductController {
     @Autowired
     private ImageURLGet imageURLGet;
     @GetMapping
-    private ResponseEntity<Page<Product>> findAll(@PageableDefault(value = 2) Pageable pageable ) {
-        return new ResponseEntity<>(iProduct.findAll(pageable), HttpStatus.OK);
+    private ResponseEntity<List<DTOProduct>> findAll() {
+        return new ResponseEntity<>(iProduct.getAllDTO(), HttpStatus.OK);
     }
 
     @GetMapping("/new-product")
@@ -37,6 +39,12 @@ public class ProductController {
     private ResponseEntity<?> findAllImage() {
         return new ResponseEntity<>(imageURLGet.findAll(), HttpStatus.OK);
     }
+
+    @GetMapping("/image/{id}")
+    private ResponseEntity<?> findImageURLByProductId(@PathVariable Long id) {
+        return new ResponseEntity<>(imageURLGet.findByProduct(id), HttpStatus.OK);
+    }
+
 
 
     @PostMapping("/imageURL")

@@ -14,7 +14,7 @@ public class ImageURLService implements ImageURLGet {
     @Autowired
     private ImageURLRepository imageURLRepository;
     @Override
-    public List<ImageURL> findByProduct(Long id) {
+    public List<String> findByProduct(Long id) {
         return imageURLRepository.findImageURLByProductId(id);
     }
 

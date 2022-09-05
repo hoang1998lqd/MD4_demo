@@ -10,6 +10,9 @@ import java.util.List;
 
 @Repository
 public interface ImageURLRepository extends JpaRepository<ImageURL, Long> {
-    @Query(value = " select * from imageurl where product_id = ?1", nativeQuery = true)
-    List<ImageURL> findImageURLByProductId(@Param("id")Long id);
+    @Query(value = " select imageurl.name from imageurl where product_id = ?1", nativeQuery = true)
+    List<String> findImageURLByProductId(@Param("id")Long id);
+
+
+
 }
