@@ -8,6 +8,7 @@ import com.example.test_case.service.IProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -31,16 +32,15 @@ public class ProductController {
 
 //    Hiển thị tất cả sản phẩm
     @GetMapping
-    public ResponseEntity<Page<Product>> findAll(Pageable pageable) {
+    public ResponseEntity<Page<Product>> findAll( @PageableDefault (value = 10) Pageable pageable) {
         return new ResponseEntity<>(productService.findAll(pageable), HttpStatus.OK);
     }
 
 //    Hiển thị loại sản phẩm
     @GetMapping("/categories")
-    public ResponseEntity<Page<Category>> findAllCategories(Pageable pageable) {
+    public ResponseEntity<Page<Category>> findAllCategories(@PageableDefault (value = 10) Pageable pageable) {
         return new ResponseEntity<>(categoryService.findAll(pageable), HttpStatus.OK);
     }
-
 
 //    Chi tiết 1 sản phẩm
     @GetMapping("/{id}")
@@ -78,11 +78,11 @@ public class ProductController {
 
     @GetMapping("search/{search}")
     public ResponseEntity<?> findByName(@PathVariable("search") String name, Pageable pageable) {
-        Page<Product> productList = productService.findByName(name, pageable);
-        if (productList.isEmpty()) {
+        Page<Product> productPage = productService.findByName(name, pageable);
+        if (productPage.isEmpty()) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
-        return new ResponseEntity<>(productList, HttpStatus.OK);
+        return new ResponseEntity<>(productPage, HttpStatus.OK);
     }
-
 }
+

@@ -10,7 +10,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface IOrdersRepository extends JpaRepository<Long, Orders> {
+public interface IOrdersRepository extends JpaRepository< Orders,Long> {
     //Trello #18
     @Query(value = "select * from orders where id like: id", nativeQuery = true)
     Page<Orders> findOrdersById (Long id, Pageable pageable);

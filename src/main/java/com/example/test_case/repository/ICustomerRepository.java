@@ -10,7 +10,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface ICustomerRepository extends JpaRepository<Long, Customer> {
+public interface ICustomerRepository extends JpaRepository< Customer, Long> {
 
 //Trello #11
 @Query(value = "select * from customer where id like: id", nativeQuery = true)

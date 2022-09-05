@@ -24,7 +24,8 @@ public interface IProductRepository extends JpaRepository<Product, Long> {
     Page<Product> findProductById(Long id, Pageable pageable);
 
     //Trello #4
-    @Query(value = "Select * from product where brand_id =:idb and category_id =:idc", nativeQuery = true)
+    @Query(value = "select * from product where brand_id =:idb and category_id =:idc", nativeQuery = true)
     Page<Product> findProductByFilter(@Param("idb") Long idb,@Param("idc") Long idc, Pageable pageable);
 
+//    @Query(value = "select * from product where ")
 }
