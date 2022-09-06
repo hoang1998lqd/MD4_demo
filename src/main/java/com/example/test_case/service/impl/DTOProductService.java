@@ -1,4 +1,4 @@
-package com.example.test_case.service.Impl;
+package com.example.test_case.service.impl;
 
 import com.example.test_case.model.DTO.DTOProduct;
 import com.example.test_case.model.ImageURL;

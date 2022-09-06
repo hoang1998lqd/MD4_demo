@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.Optional;
 
 public interface IGeneralService<T> {
-    Page<T> findAll(Pageable pageable);
+    List<T> findAll();
 
     Optional<T> findById(Long id);
 
