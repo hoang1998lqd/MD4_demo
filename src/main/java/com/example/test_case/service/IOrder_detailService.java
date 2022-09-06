@@ -1,4 +1,6 @@
 package com.example.test_case.service;
 
-public interface IOrder_detailService {
+import com.example.test_case.model.Order_detail;
+
+public interface IOrder_detailService extends IGeneralService<Order_detail> {
 }

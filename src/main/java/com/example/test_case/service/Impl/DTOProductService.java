@@ -1,4 +1,4 @@
-package com.example.test_case.service.Impl;
+package com.example.test_case.service.impl;
 
 import com.example.test_case.model.DTO.DTOProduct;
 import com.example.test_case.model.ImageURL;
@@ -15,11 +15,8 @@ import java.util.Objects;
 public class DTOProductService {
     @Autowired
     ImageURLGet imageURLGet;
-
     @Autowired
     IProductService iProductService;
-
-
 
     private List<ImageURL>getImageURLS (){
         return imageURLGet.findAll();
