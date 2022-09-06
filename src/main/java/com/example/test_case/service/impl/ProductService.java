@@ -7,6 +7,7 @@ import com.example.test_case.service.IProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -21,7 +22,14 @@ public class ProductService implements IProductService {
 
     @Override
     public List<Product> findAll() {
-        return productRepository.findAll();
+        List<Product> products = productRepository.findAll();
+        List<Product> productList = new ArrayList<>();
+        for (Product product : products){
+            if (product.getStatus() != 0){
+                productList.add(product);
+            }
+        }
+        return productList;
     }
 
 
