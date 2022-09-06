@@ -1,6 +1,5 @@
 package com.example.test_case.model;
 
-
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
