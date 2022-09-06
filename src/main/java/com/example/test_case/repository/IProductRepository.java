@@ -1,6 +1,7 @@
 package com.example.test_case.repository;
 
 import com.example.test_case.model.Product;
+
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -13,7 +14,7 @@ import java.util.List;
 @Repository
 public interface IProductRepository extends JpaRepository<Product, Long> {
     //Trello #2
-    Page<Product> findAll(Pageable pageable);
+    List<Product> findAll();
 
     //Trello #8
     @Query(value = "select * from product where name like: name", nativeQuery = true)
@@ -28,4 +29,6 @@ public interface IProductRepository extends JpaRepository<Product, Long> {
     Page<Product> findProductByFilter(@Param("idb") Long idb,@Param("idc") Long idc, Pageable pageable);
 
 //    @Query(value = "select * from product where ")
+
 }
+

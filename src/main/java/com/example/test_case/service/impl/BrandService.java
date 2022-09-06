@@ -5,7 +5,6 @@ import com.example.test_case.repository.BrandRepository;
 import com.example.test_case.service.IBrandService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
 import java.util.Optional;
 
@@ -33,7 +32,6 @@ public class BrandService implements IBrandService {
     public void delete(Long id) {
         brandRepository.deleteById(id);
     }
-
     @Override
     public List<Brand> findBrandsByCategoryId(Long id) {
         return brandRepository.findBrandsByCategoryId(id);
