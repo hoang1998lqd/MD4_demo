@@ -1,4 +1,5 @@
 // Bật modal
+
 function openModal() {
     $.ajax({
         type: "GET",

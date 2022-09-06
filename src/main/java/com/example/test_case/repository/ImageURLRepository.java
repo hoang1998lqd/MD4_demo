@@ -13,6 +13,4 @@ public interface ImageURLRepository extends JpaRepository<ImageURL, Long> {
     @Query(value = " select imageurl.name from imageurl where product_id = ?1", nativeQuery = true)
     List<String> findImageURLByProductId(@Param("id")Long id);
 
-
-
 }

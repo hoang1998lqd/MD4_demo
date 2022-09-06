@@ -14,9 +14,9 @@ import java.util.Objects;
 @Service
 public class DTOProductService {
     @Autowired
-    ImageURLGet imageURLGet;
+    private ImageURLGet imageURLGet;
     @Autowired
-    IProductService iProductService;
+    private IProductService iProductService;
 
     private List<ImageURL>getImageURLS (){
         return imageURLGet.findAll();

@@ -10,7 +10,6 @@ import java.util.List;
 import java.util.Optional;
 @Service
 public class ImageURLService implements ImageURLGet {
-
     @Autowired
     private ImageURLRepository imageURLRepository;
     @Override
