@@ -36,11 +36,10 @@ public class ProductController {
         return new ResponseEntity<>(imageURLGet.findAll(), HttpStatus.OK);
     }
 
-    @GetMapping("/image/{id}")
+    @GetMapping("/image-product/{id}")
     private ResponseEntity<?> findImageURLByProductId(@PathVariable Long id) {
         return new ResponseEntity<>(imageURLGet.findByProduct(id), HttpStatus.OK);
     }
-
 
 
     @PostMapping("/imageURL")
@@ -58,6 +57,21 @@ public class ProductController {
     private ResponseEntity<Void> deleteProduct( @PathVariable Long id){
         iProduct.delete(id);
         return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+    // Update IMG cho Product
+    @PutMapping("/update-img")
+    private ResponseEntity<ImageURL> updateImg(@RequestBody ImageURL imageURL){
+        Optional<ImageURL>optionalImageURL = imageURLGet.findById(imageURL.getId());
+        if(optionalImageURL.isPresent()){
+            return new ResponseEntity<>(imageURLGet.save(imageURL),HttpStatus.OK);
+        }
+        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    }
+
+    @GetMapping("/product-update/{id}")
+    private ResponseEntity<?> findIdByProductId(@PathVariable Long id) {
+        return new ResponseEntity<>(imageURLGet.findIdByProductId(id), HttpStatus.OK);
     }
 
     @PutMapping

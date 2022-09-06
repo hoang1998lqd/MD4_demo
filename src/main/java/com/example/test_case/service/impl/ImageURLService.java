@@ -24,7 +24,7 @@ public class ImageURLService implements ImageURLGet {
 
     @Override
     public Optional<ImageURL> findById(Long id) {
-        return Optional.empty();
+        return imageURLRepository.findById(id);
     }
 
     @Override
@@ -34,6 +34,11 @@ public class ImageURLService implements ImageURLGet {
 
     @Override
     public void delete(Long id) {
+    imageURLRepository.deleteById(id);
+    }
 
+    @Override
+    public List<Long> findIdByProductId(Long id) {
+        return imageURLRepository.findIdByProductId(id);
     }
 }

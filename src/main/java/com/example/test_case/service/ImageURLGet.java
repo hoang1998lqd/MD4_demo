@@ -1,6 +1,7 @@
 package com.example.test_case.service;
 
 import com.example.test_case.model.ImageURL;
+import org.springframework.data.repository.query.Param;
 
 
 import java.util.List;
@@ -12,4 +13,5 @@ public interface ImageURLGet {
     Optional<ImageURL> findById(Long id);
     ImageURL save(ImageURL imageURL);
     void delete(Long id);
+    List<Long> findIdByProductId( Long id);
 }
