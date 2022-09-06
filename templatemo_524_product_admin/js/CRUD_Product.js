@@ -55,7 +55,7 @@ function loadTable(list) {
             content += "<th>" + list[i].product.amount + "</th>"
             content += "<th>" + list[i].product.color + "</th>"
             content += "<th>" + list[i].product.description + "</th>"
-            content += " <th>" + '<img  src="  ' + list[i].imageURLS[0] + '  "  width="100" height="100" alt="Error">' + "</th>"
+            content += " <th>" + '<img  src="  ' + list[i].imageURLS[1] + '  "  width="100" height="100" alt="Error">' + "</th>"
 
             content += "      <th>\n" +
                 "                            <button onclick='getProduct(" + list[i].product.id + ")' class=\"tm-product-delete-link\">\n" +
@@ -73,7 +73,7 @@ function loadTable(list) {
     document.getElementById("display-product").innerHTML = content;
 }
 
-
+closeModal()
 // Tìm Sản phẩm theo Id
 
 
@@ -132,7 +132,7 @@ function saveImageURL() {
     uploadIMG
         .then(snapshot => snapshot.ref.getDownloadURL())
         .then(url => {
-            document.getElementById('loadImg').innerHTML = " <th>" + '<img  src="  ' + url + '  "  width="100" height="100" alt="Error">' + "</th>"
+            // document.getElementById('loadImg').innerHTML = " <th>" + '<img  src="  ' + url + '  "  width="100" height="100" alt="Error">' + "</th>"
             let imageURL = {
                 name: url,
                 product: {
@@ -161,7 +161,7 @@ function saveImageURL() {
     uploadIMG1
         .then(snapshot1 => snapshot1.ref.getDownloadURL())
         .then(url1 => {
-            document.getElementById('loadImg1').innerHTML = " <th>" + '<img  src="  ' + url1 + '  "  width="100" height="100" alt="Error">' + "</th>"
+            // document.getElementById('loadImg1').innerHTML = " <th>" + '<img  src="  ' + url1 + '  "  width="100" height="100" alt="Error">' + "</th>"
             let imageURL = {
                 name: url1,
                 product: {
@@ -190,7 +190,7 @@ function saveImageURL() {
     uploadIMG2
         .then(snapshot2 => snapshot2.ref.getDownloadURL())
         .then(url2 => {
-            document.getElementById('loadImg2').innerHTML = " <th>" + '<img  src="  ' + url2 + '  "  width="100" height="100" alt="Error">' + "</th>"
+            // document.getElementById('loadImg2').innerHTML = " <th>" + '<img  src="  ' + url2 + '  "  width="100" height="100" alt="Error">' + "</th>"
             let imageURL = {
                 name: url2,
                 product: {
@@ -208,6 +208,7 @@ function saveImageURL() {
                 url: "http://localhost:8081/api/products/imageURL",
                 //xử lý khi thành công
                 success: function () {
+
                 }
             });
             //chặn sự kiện mặc định của thẻ
@@ -329,7 +330,6 @@ function getProduct(idProduct) {
         type: "GET",
         url: "http://localhost:8081/api/products/" + idProduct,
         success: function (data) {
-            console.log(idProduct)
             openModal()
             localStorage.setItem("updateId", idProduct)
             idProduct = data.id;
@@ -337,7 +337,7 @@ function getProduct(idProduct) {
             document.getElementById('price').value = data.price;
             document.getElementById('amount').value = data.amount;
             document.getElementById('color').value = data.color;
-            document.getElementById('description').innerHTML = data.description;
+            document.getElementById('description').value = data.description;
             document.getElementById('discount').value = data.discount;
             document.getElementById("title-button").setAttribute("onclick","updateProduct()");
             console.log(idProduct)
@@ -505,6 +505,7 @@ function updateProduct() {
             setTimeout(createDone, 8000)
             setTimeout(closeModal, 8000)
             setTimeout(getProducts, 8000)
+            getProducts()
         }
     });
     //chặn sự kiện mặc định của thẻ
