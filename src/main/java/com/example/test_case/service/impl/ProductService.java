@@ -54,4 +54,11 @@ public class ProductService implements IProductService {
     public List<DTOProduct> getAllDTO() {
         return dtoProductService.createDtoProducts();
     }
+
+    @Override
+    public List<Product> findProductByPriceBetween(double price1, double price2) {
+        return productRepository.findProductByPriceBetween(price1,price2);
+    }
+
+
 }

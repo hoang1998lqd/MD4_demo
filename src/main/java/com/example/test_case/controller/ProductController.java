@@ -6,9 +6,12 @@ import com.example.test_case.model.DTO.DTOProduct;
 import com.example.test_case.model.ImageURL;
 import com.example.test_case.service.ImageURLGet;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
 
 import java.util.List;
@@ -145,6 +148,18 @@ public class ProductController {
             return new ResponseEntity<>(product.get(), HttpStatus.OK);
         }
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    }
+
+    @GetMapping("/between-price")
+    public ResponseEntity<?> findBetweenPrice(@RequestParam("min") Optional<Double> min
+            , @RequestParam("max") Optional<Double> max) {
+        double minPrice = min.orElse(Double.MIN_VALUE);
+        double maxPrice = max.orElse(Double.MAX_VALUE);
+        List<Product> products = iProduct.findProductByPriceBetween(minPrice, maxPrice);
+        if (products.isEmpty()) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<>(products, HttpStatus.OK);
     }
 }
 

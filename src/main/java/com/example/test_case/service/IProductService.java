@@ -15,4 +15,6 @@ public interface IProductService extends IGeneralService<Product> {
     void delete(Long id);
     Long findIdNewProduct();
     List<DTOProduct> getAllDTO();
+    List<Product> findProductByPriceBetween(double price1, double price2);
+
 }

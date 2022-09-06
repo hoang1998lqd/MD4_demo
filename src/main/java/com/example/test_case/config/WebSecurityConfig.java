@@ -63,6 +63,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         http.exceptionHandling().authenticationEntryPoint(restServicesEntryPoint());
         http.authorizeRequests()
 //                .antMatchers("/", "/api/login","/api/signup","/api/role").permitAll()
+//               cấp quyền cho tất cả
+                .antMatchers("/**").permitAll()
                 //đặt url dưới quyền User, quản lý bởi Spring Security
 //                .antMatchers("/students**","/").hasAnyAuthority("ADMIN")
                 .anyRequest().authenticated()
