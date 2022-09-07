@@ -11,7 +11,7 @@ import java.util.List;
 public interface ICustomerRepository extends JpaRepository<Customer, Long> {
 
 //Trello #10
-@Query(value = "select * from customer where phone_number like: phone_number", nativeQuery = true)
+@Query(value = "select * from customer where phone_number", nativeQuery = true)
     List<Customer> findAllCustomerByPhone_numberContaining(String phoneNumber);
 
 }
