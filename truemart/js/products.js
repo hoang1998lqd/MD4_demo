@@ -55,7 +55,6 @@ function loadTable(list)    {
                 "                                                    </div>\n" +
                 "                                                    <div class=\"pro-actions\">\n" +
                 "                                                        <div class=\"actions-primary\">\n" +
-                // "                                                            <button    title=\"Add to Cart\"> + Add To Cart</button>\n" +
                 "                                                           <a onclick='createItem("+ list[i].product.id  +", 1)' title=\"\" data-original-title=\"Add to Cart\"> + Thêm vào giỏ</a> " +
                 "                                                        </div>\n" +
                 "                                                        <div class=\"actions-secondary\">\n" +
@@ -81,43 +80,74 @@ function changePrice(n){
 }
 
 //Create Item
+// Đã check theo Item trùng
 function createItem(idProduct,idCustomer) {
     $.ajax({
         type: "GET",
         url: "http://localhost:8081/api/carts/item/" + 1,
         success: function (data) {
+            let flag = false;
             for (let i = 0; i < data.length; i++) {
                 if (data[i].product.id == idProduct){
-                    data[i].quantity += 1 ;
+                    flag = true;
+                    let quantity = data[i].quantity + 1;
+                    let item = {
+                        id : data[i].id,
+                        quantity : quantity,
+                        cart:{
+                            id: idCustomer
+                        },
+                        product:{
+                            id: idProduct
+                        }
+                    }
+                    $.ajax({
+                        headers: {
+                            'Accept': 'application/json',
+                            'Content-Type': 'application/json'
+                        },
+                        type: "PUT",
+                        data: JSON.stringify(item),
+                        //tên API
+                        url: "http://localhost:8081/api/carts/item/",
+                        //xử lý khi thành công
+                        success: function () {
+                            addItemSuccess()
+                            getItemByCustomerId(idCustomer)
+                        }
+                    });
                 }
+            }
+            if (!flag){
+                let quantity = 1;
+                let item = {
+                    quantity : quantity,
+                    cart:{
+                        id: idCustomer
+                    },
+                    product:{
+                        id: idProduct
+                    }
+                }
+                $.ajax({
+                    headers: {
+                        'Accept': 'application/json',
+                        'Content-Type': 'application/json'
+                    },
+                    type: "POST",
+                    data: JSON.stringify(item),
+                    //tên API
+                    url: "http://localhost:8081/api/carts/item",
+                    //xử lý khi thành công
+                    success: function () {
+                        addItemSuccess()
+                        getItemByCustomerId(idCustomer)
+                    }
+                });
             }
         }
     })
-    let quantity = 1;
-    let item = {
-        quantity : quantity,
-        cart:{
-            id: idCustomer
-        },
-        product:{
-            id: idProduct
-        }
-    }
-    $.ajax({
-        headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json'
-        },
-        type: "POST",
-        data: JSON.stringify(item),
-        //tên API
-        url: "http://localhost:8081/api/carts/item",
-        //xử lý khi thành công
-        success: function () {
-            addItemSuccess()
-            getItemByCustomerId(idCustomer)
-        }
-    });
+
     //chặn sự kiện mặc định của thẻ
     event.preventDefault();
 }
@@ -273,9 +303,9 @@ function displayItemInCart(items) {
             "    <a href=\"#\"><img src=" + localStorage.getItem(items[i].product.id )+ " alt=\"cart-image\" /></a>\n" +
             "      </td>\n" +
             "  <td class=\"product-name\"><a href=\"#\">"+ items[i].product.name +"</a></td>\n" +
-            "    <td class=\"product-price\"><span class=\"amount\">"+ items[i].product.price +"</span></td>\n" +
-            "  <td class=\"product-quantity\"><input type=\"number\" value="+ items[i].quantity +" /></td>\n" +
-            "    <td class=\"product-subtotal\">"+ items[i].product.price * items[i].quantity +"</td>\n" +
+            "    <td class=\"product-price\"><span class=\"amount\">"+ changePrice(items[i].product.price) +"</span></td>\n" +
+            "  <td class=\"product-quantity\"><input type=\"number\" id='quantity-"+ items[i].id +"' value="+ items[i].quantity +" /></td>\n" +
+            "    <td class=\"product-subtotal\">"+ changePrice(items[i].product.price * items[i].quantity) +"</td>\n" +
             "   <td class=\"product-remove\"> <a href=\"#\"><i class=\"fa fa-times\" aria-hidden=\"true\" onclick='deleteItem("+items[i].id +")'></i></a></td>"
         content += "</tr>"
     }
@@ -302,14 +332,12 @@ function displayItemInCart(items) {
         "                                            </tbody>\n" +
         "                                        </table>\n" +
         "                                        <div class=\"wc-proceed-to-checkout\">\n" +
-        "                                            <a href=\"#\">Tiến hành thanh toán</a>\n" +
+        "                                           <a href=\"../truemart/checkout.html\">Tiến hành thanh toán</a>\n" +
         "                                        </div>\n" +
         "                                    </div>"
     document.getElementById('display-item-cart').innerHTML = content
     document.getElementById('checkout-item').innerHTML = result
 }
-
-
 
 
 // Thanh toán đơn hàng
