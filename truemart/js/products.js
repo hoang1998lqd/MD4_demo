@@ -74,3 +74,4 @@ function changePrice(n){
     })
     return  formatter.format(n);
 }
+
