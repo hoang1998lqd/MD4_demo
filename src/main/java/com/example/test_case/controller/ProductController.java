@@ -9,8 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import java.util.List;
-import java.util.Optional;
+
+import java.util.*;
 
 @RestController
 @CrossOrigin("*")
@@ -23,7 +23,9 @@ public class ProductController {
     private ImageURLGet imageURLGet;
     @GetMapping
     private ResponseEntity<List<DTOProduct>> findAll() {
-        return new ResponseEntity<>(iProduct.getAllDTO(), HttpStatus.OK);
+        ArrayList<DTOProduct> products = (ArrayList<DTOProduct>) iProduct.getAllDTO();
+        Collections.reverse(products);
+        return new ResponseEntity<>(products, HttpStatus.OK);
     }
 
     @GetMapping("/new-product")
