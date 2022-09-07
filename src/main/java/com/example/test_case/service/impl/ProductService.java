@@ -2,6 +2,7 @@ package com.example.test_case.service.impl;
 
 import com.example.test_case.model.DTO.DTOProduct;
 import com.example.test_case.model.Product;
+import com.example.test_case.repository.IProductRepository;
 import com.example.test_case.repository.ProductRepository;
 import com.example.test_case.service.IProductService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +13,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
+
 public class ProductService implements IProductService {
     @Autowired
     private ProductRepository productRepository;
@@ -19,6 +21,9 @@ public class ProductService implements IProductService {
     @Autowired
     private DTOProductService dtoProductService;
 
+
+    @Autowired
+    private IProductRepository iProductRepository;
 
     @Override
     public List<Product> findAll() {
@@ -71,6 +76,11 @@ public class ProductService implements IProductService {
     @Override
     public List<Product> findProductByCategory(Long id) {
         return productRepository.findProductByCategory(id);
+    }
+
+    @Override
+    public List<Product> findProductByName(String name) {
+        return iProductRepository.findAllByNameContaining(name);
     }
 
 

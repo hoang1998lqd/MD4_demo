@@ -3,7 +3,7 @@ package com.example.test_case.service;
 import com.example.test_case.conmon.IGeneralService;
 import com.example.test_case.model.DTO.DTOProduct;
 import com.example.test_case.model.Product;
-import org.springframework.data.repository.query.Param;
+
 
 import java.util.List;
 import java.util.Optional;
@@ -19,6 +19,8 @@ public interface IProductService extends IGeneralService<Product> {
     List<Product> findProductByPriceBetween(double price1, double price2);
 
     List<Product> findProductByCategory (Long categoryId);
+
+    List<Product> findProductByName (String name);
 
 
 }

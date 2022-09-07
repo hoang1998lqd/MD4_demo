@@ -11,10 +11,10 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 
-
-
 import java.util.List;
 import java.util.Optional;
+import java.util.*;
+
 
 @RestController
 @CrossOrigin("*")
@@ -29,7 +29,9 @@ public class ProductController {
 
     @GetMapping
     private ResponseEntity<List<DTOProduct>> findAll() {
-        return new ResponseEntity<>(iProduct.getAllDTO(), HttpStatus.OK);
+        ArrayList<DTOProduct> products = (ArrayList<DTOProduct>) iProduct.getAllDTO();
+        Collections.reverse(products);
+        return new ResponseEntity<>(products, HttpStatus.OK);
     }
 
     @GetMapping("/new-product")
@@ -117,6 +119,11 @@ public class ProductController {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
         return new ResponseEntity<>(products,HttpStatus.OK);
+    }
+
+    @GetMapping("/search-by-name/{name}")
+    public ResponseEntity<List<Product>> findProductByName(@PathVariable("name") String name)  {
+        return new ResponseEntity<>(iProduct.findProductByName(name), HttpStatus.OK);
     }
 }
 
