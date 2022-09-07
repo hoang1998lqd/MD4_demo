@@ -10,7 +10,6 @@ import java.util.List;
 import java.util.Optional;
 @Service
 public class ImageURLService implements ImageURLGet {
-
     @Autowired
     private ImageURLRepository imageURLRepository;
     @Override
@@ -25,7 +24,7 @@ public class ImageURLService implements ImageURLGet {
 
     @Override
     public Optional<ImageURL> findById(Long id) {
-        return Optional.empty();
+        return imageURLRepository.findById(id);
     }
 
     @Override
@@ -35,6 +34,11 @@ public class ImageURLService implements ImageURLGet {
 
     @Override
     public void delete(Long id) {
+    imageURLRepository.deleteById(id);
+    }
 
+    @Override
+    public List<Long> findIdByProductId(Long id) {
+        return imageURLRepository.findIdByProductId(id);
     }
 }

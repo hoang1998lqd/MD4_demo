@@ -6,12 +6,11 @@ import com.example.test_case.model.DTO.DTOProduct;
 import com.example.test_case.model.ImageURL;
 import com.example.test_case.service.ImageURLGet;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.ModelAndView;
+
+
 
 
 import java.util.List;
@@ -21,73 +20,7 @@ import java.util.Optional;
 @CrossOrigin("*")
 @RequestMapping(value = "/api/products")
 public class ProductController {
-    //<<<<<<< HEAD
-//
-//    @Autowired
-//    public IProductService productService;
-//    @Autowired
-//    public ICategoryService categoryService;
-//    @Autowired
-//    public IBrandService brandService;
-//
-//
-////    Hiển thị tất cả sản phẩm
-//    @GetMapping
-//    public ResponseEntity<Page<Product>> findAll( @PageableDefault (value = 10) Pageable pageable) {
-//        return new ResponseEntity<>(productService.findAll(pageable), HttpStatus.OK);
-//    }
-//
-////    Hiển thị loại sản phẩm
-//    @GetMapping("/categories")
-//    public ResponseEntity<Page<Category>> findAllCategories(@PageableDefault (value = 10) Pageable pageable) {
-//        return new ResponseEntity<>(categoryService.findAll(pageable), HttpStatus.OK);
-//    }
-//
-////    Chi tiết 1 sản phẩm
-//    @GetMapping("/{id}")
-//    public ResponseEntity<Product> detail(@PathVariable("id") Long id) {
-//        Optional<Product> productOptional = productService.findById(id);
-//        if (productOptional.isPresent()) {
-//            return new ResponseEntity<>(productOptional.get(), HttpStatus.OK);
-//        }
-//        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-//    }
-//
-////    Tạo sản phẩm mới
-//    @PostMapping
-//    public ResponseEntity<Product> createProduct(@RequestBody Product product) {
-//        return new ResponseEntity<>(productService.save(product), HttpStatus.OK);
-//    }
-//
-//    @PutMapping
-//    public ResponseEntity<Product> updateProduct(@RequestBody Product product) {
-//        Optional<Product> productOptional = productService.findById(product.getId());
-//        if (productOptional.isPresent()) {
-//            return new ResponseEntity<>(productService.save(product), HttpStatus.OK);
-//        }
-//        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-//    }
-//
-//    @DeleteMapping("/{id}")
-//    public ResponseEntity<Void> deleteProduct(@PathVariable("id") Long id) {
-//        Optional<Product> productOptional = productService.findById(id);
-//        if (productOptional.isPresent()) {
-//            productService.delete(id);
-//        }
-//        return new ResponseEntity<>(HttpStatus.OK);
-//    }
-//
-//    @GetMapping("search/{search}")
-//    public ResponseEntity<?> findByName(@PathVariable("search") String name, Pageable pageable) {
-//        Page<Product> productPage = productService.findByName(name, pageable);
-//        if (productPage.isEmpty()) {
-//            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-//        }
-//        return new ResponseEntity<>(productPage, HttpStatus.OK);
-//    }
-//}
-//
-//=======
+
     @Autowired
     private IProductService iProduct;
 
@@ -109,7 +42,7 @@ public class ProductController {
         return new ResponseEntity<>(imageURLGet.findAll(), HttpStatus.OK);
     }
 
-    @GetMapping("/image/{id}")
+    @GetMapping("/image-product/{id}")
     private ResponseEntity<?> findImageURLByProductId(@PathVariable Long id) {
         return new ResponseEntity<>(imageURLGet.findByProduct(id), HttpStatus.OK);
     }
@@ -130,6 +63,21 @@ public class ProductController {
     private ResponseEntity<Void> deleteProduct(@PathVariable Long id) {
         iProduct.delete(id);
         return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+    // Update IMG cho Product
+    @PutMapping("/update-img")
+    private ResponseEntity<ImageURL> updateImg(@RequestBody ImageURL imageURL){
+        Optional<ImageURL>optionalImageURL = imageURLGet.findById(imageURL.getId());
+        if(optionalImageURL.isPresent()){
+            return new ResponseEntity<>(imageURLGet.save(imageURL),HttpStatus.OK);
+        }
+        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    }
+
+    @GetMapping("/product-update/{id}")
+    private ResponseEntity<?> findIdByProductId(@PathVariable Long id) {
+        return new ResponseEntity<>(imageURLGet.findIdByProductId(id), HttpStatus.OK);
     }
 
     @PutMapping
