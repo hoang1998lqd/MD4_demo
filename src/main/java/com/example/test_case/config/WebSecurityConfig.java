@@ -62,9 +62,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         http.csrf().ignoringAntMatchers("/**");
         http.exceptionHandling().authenticationEntryPoint(restServicesEntryPoint());
         http.authorizeRequests()
-                .antMatchers("/**/").permitAll()
+                .antMatchers("/**/", "/api/customers/login", "/api/customers/signup").permitAll()
                 //đặt url dưới quyền User, quản lý bởi Spring Security
-//                .antMatchers("/students**","/").hasAnyAuthority("ADMIN")
+                .antMatchers("/api/products").hasAuthority("ADMIN")
                 .anyRequest().authenticated()
                 .and().csrf().disable();
         http.addFilterBefore(jwtAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class)

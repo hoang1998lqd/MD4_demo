@@ -38,16 +38,27 @@ public class CustomerService implements ICustomerService {
     }
 
     @Override
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-       Optional<Customer> customerOptional = customerRepository.findByName(username);
-       if (!customerOptional.isPresent()){
-           throw new UsernameNotFoundException(username);
+    public UserDetails loadUserByUsername(String name) throws UsernameNotFoundException {
+        String b =name;
+       Optional<Customer> customerOptional = customerRepository.findByName(name);
+           if (!customerOptional.isPresent()){
+           throw new UsernameNotFoundException(name);
        }
         return CustomerPrinciple.build(customerOptional.get());
     }
 
     @Override
-    public List<Customer> findAllByName(String name) {
-        return customerRepository.findAllByNameContaining(name);
+    public Optional<Customer> findByEmailAddressAndPassword(String email, String password) {
+        return customerRepository.findByEmailAddressAndPassword(email, password);
+    }
+
+    @Override
+    public Optional<Customer> findByName(String name) {
+        return customerRepository.findByName(name);
+    }
+
+    @Override
+    public Optional<Customer> findByEmailAddress(String email) {
+        return customerRepository.findByEmailAddress(email);
     }
 }

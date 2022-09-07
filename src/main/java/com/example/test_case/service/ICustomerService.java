@@ -7,6 +7,10 @@ import java.util.List;
 import java.util.Optional;
 
 public interface ICustomerService extends UserDetailsService, IGeneralService<Customer> {
-    List<Customer> findAllByName(String name);
+    Optional<Customer> findByEmailAddressAndPassword(String email, String password);
+
+    Optional<Customer> findByName (String name);
+
+    Optional<Customer> findByEmailAddress (String email);
 
 }
