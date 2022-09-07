@@ -14,5 +14,5 @@ import java.util.List;
 public interface IOrdersRepository extends JpaRepository< Orders,Long> {
     //Trello #18
     @Query(value = "select * from orders where id like: id", nativeQuery = true)
-    Page<Orders> findOrdersById (Long id, Pageable pageable);
+    List<Orders> findOrdersById (Long id);
 }

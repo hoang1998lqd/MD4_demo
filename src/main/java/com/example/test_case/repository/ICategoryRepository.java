@@ -15,5 +15,5 @@ public interface ICategoryRepository extends JpaRepository<Category, Long> {
 
     //Trello #1
     @Query(value = "select * from category", nativeQuery = true)
-    Page<Category> findAllCategory(Long id, Pageable pageable);
+    List<Category> findAllCategory(Long id);
 }

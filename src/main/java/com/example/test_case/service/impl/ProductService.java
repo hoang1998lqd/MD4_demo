@@ -60,5 +60,10 @@ public class ProductService implements IProductService {
         return productRepository.findProductByPriceBetween(price1,price2);
     }
 
+    @Override
+    public List<Product> findProductByCategory(Long id) {
+        return productRepository.findProductByCategory(id);
+    }
+
 
 }

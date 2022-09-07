@@ -16,11 +16,11 @@ public interface ICustomerRepository extends JpaRepository<Customer, Long> {
 
     //Trello #11
     @Query(value = "select * from customer where id like: id", nativeQuery = true)
-    Page<Customer> findAllByCustomer(Long id, Pageable pageable);
+    List<Customer> findAllByCustomer(Long id);
 
     //Trello #10
     @Query(value = "select * from customer where phone_number like: phone_number", nativeQuery = true)
-    Page<Customer> findCustomerByPhone(String phoneNumber, Pageable pageable);
+    List<Customer> findCustomerByPhone(String phoneNumber);
 
     List<Customer> findAllByNameContaining(String name);
 

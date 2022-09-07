@@ -18,17 +18,16 @@ public interface IProductRepository extends JpaRepository<Product, Long> {
 
     //Trello #8
     @Query(value = "select * from product where name like: name", nativeQuery = true)
-    Page<Product> findAllByNameContaining(@Param("name") String name, Pageable pageable);
+    List<Product> findAllByNameContaining(@Param("name") String name);
 
     //Trello #3
     @Query(value = "select * from product where id like: id", nativeQuery = true)
-    Page<Product> findProductById(Long id, Pageable pageable);
+    List<Product> findProductById(Long id);
 
     //Trello #4
     @Query(value = "select * from product where brand_id =:idb and category_id =:idc", nativeQuery = true)
-    Page<Product> findProductByFilter(@Param("idb") Long idb,@Param("idc") Long idc, Pageable pageable);
+    List<Product> findProductByFilter(@Param("idb") Long idb,@Param("idc") Long idc);
 
 //    @Query(value = "select * from product where ")
-
 }
 

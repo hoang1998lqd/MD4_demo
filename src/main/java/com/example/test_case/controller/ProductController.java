@@ -161,5 +161,14 @@ public class ProductController {
         }
         return new ResponseEntity<>(products, HttpStatus.OK);
     }
+
+    @GetMapping("/find-all-categories/{id}")
+    public ResponseEntity<?> findProductByCategories(@PathVariable Long id) {
+        List<Product> products = iProduct.findProductByCategory(id);
+        if (products.isEmpty()) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<>(products,HttpStatus.OK);
+    }
 }
 

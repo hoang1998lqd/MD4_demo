@@ -25,4 +25,6 @@ public interface ProductRepository extends JpaRepository<Product,Long> {
 
     List<Product> findProductByPriceBetween(double price1, double price2);
 
+    @Query(value = "select * from product where category_id = :id", nativeQuery = true)
+    List<Product> findProductByCategory (@Param("id") Long id);
 }
