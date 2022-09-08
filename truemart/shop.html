@@ -6,18 +6,8 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <title>Shop || Truemart Responsive Html5 Ecommerce Template</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
-
     <!-- Favicons -->
-
-
-
     <link rel="shortcut icon" href="img/favicon.ico">
-
-
-
     <!-- Fontawesome css -->
     <link rel="stylesheet" href="css/font-awesome.min.css">
     <!-- Ionicons css -->
@@ -48,6 +38,7 @@
     <!-- Modernizer js -->
     <script src="js/vendor/modernizr-3.5.0.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="js/products.js"></script>
 </head>
 
 <body>
@@ -64,7 +55,7 @@
                     <img src="img/banner/pop-banner.jpg" alt="">
             </div>
         </div>
-        <!-- Banner Popup End -->
+        <!-- Banner Popup End -->        
        <!-- Newsletter Popup Start -->
         <div class="popup_wrapper">
             <div class="test">
@@ -98,7 +89,7 @@
                             <li><a href="#">Shopping Cart</a></li>
                             <li><a href="checkout.html">Checkout</a></li>
                         </ul>
-                        <ul>
+                        <ul>                                          
                             <li><span>Language</span> <a href="#">English<i class="lnr lnr-chevron-down"></i></a>
                                 <!-- Dropdown Start -->
                                 <ul class="ht-dropdown">
@@ -123,7 +114,7 @@
                                     <li><a href="register.html">Register</a></li>
                                 </ul>
                                 <!-- Dropdown End -->
-                            </li>
+                            </li> 
                         </ul>
                     </div>
                     <!-- Header Top End -->
@@ -185,10 +176,52 @@
                         <div class="col-lg-4 col-md-12">
                             <div class="cart-box mt-all-30">
                                 <ul class="d-flex justify-content-lg-end justify-content-center align-items-center">
-                                    <li><a href="#"><i class="lnr lnr-cart"></i><span class="my-cart"><span class="total-pro" id="count-item"></span><span>Giỏ hàng</span></span></a>
+                                    <li><a href="#"><i class="lnr lnr-cart"></i><span class="my-cart"><span class="total-pro">2</span><span>cart</span></span></a>
                                         <ul class="ht-dropdown cart-box-width">
-                                            <li id="display-item-shop">
-
+                                            <li>
+                                                <!-- Cart Box Start -->
+                                                <div class="single-cart-box">
+                                                    <div class="cart-img">
+                                                        <a href="#"><img src="img/products/1.jpg" alt="cart-image"></a>
+                                                        <span class="pro-quantity">1X</span>
+                                                    </div>
+                                                    <div class="cart-content">
+                                                        <h6><a href="product.html">Printed Summer Red </a></h6>
+                                                        <span class="cart-price">27.45</span>
+                                                        <span>Size: S</span>
+                                                        <span>Color: Yellow</span>
+                                                    </div>
+                                                    <a class="del-icone" href="#"><i class="ion-close"></i></a>
+                                                </div>
+                                                <!-- Cart Box End -->
+                                                <!-- Cart Box Start -->
+                                                <div class="single-cart-box">
+                                                    <div class="cart-img">
+                                                        <a href="#"><img src="img/products/2.jpg" alt="cart-image"></a>
+                                                        <span class="pro-quantity">1X</span>
+                                                    </div>
+                                                    <div class="cart-content">
+                                                        <h6><a href="product.html">Printed Round Neck</a></h6>
+                                                        <span class="cart-price">45.00</span>
+                                                        <span>Size: XL</span>
+                                                        <span>Color: Green</span>
+                                                    </div>
+                                                    <a class="del-icone" href="#"><i class="ion-close"></i></a>
+                                                </div>
+                                                <!-- Cart Box End -->
+                                                <!-- Cart Footer Inner Start -->
+                                                <div class="cart-footer">
+                                                   <ul class="price-content">
+                                                       <li>Subtotal <span>$57.95</span></li>
+                                                       <li>Shipping <span>$7.00</span></li>
+                                                       <li>Taxes <span>$0.00</span></li>
+                                                       <li>Total <span>$64.95</span></li>
+                                                   </ul>
+                                                    <div class="cart-actions text-center">
+                                                        <a class="cart-checkout" href="checkout.html">Checkout</a>
+                                                    </div>
+                                                </div>
+                                                <!-- Cart Footer Inner End -->
                                             </li>
                                         </ul>
                                     </li>
@@ -215,7 +248,7 @@
                     <div class="row align-items-center">
                          <div class="col-xl-3 col-lg-4 col-md-6 vertical-menu d-none d-lg-block">
                             <span class="categorie-title">Shop by Categories</span>
-                        </div>
+                        </div>                       
                         <div class="col-xl-9 col-lg-8 col-md-12 ">
                             <nav class="d-none d-lg-block">
                                 <ul class="header-bottom-list d-flex">
@@ -319,7 +352,7 @@
             <div class="container d-block d-lg-none">
                 <div class="vertical-menu mt-30">
                     <span class="categorie-title mobile-categorei-menu">Shop by Categories </span>
-                    <nav>
+                    <nav>  
                         <div id="cate-mobile-toggle" class="category-menu sidebar-menu sidbar-style mobile-categorei-menu-list menu-hidden ">
                             <ul>
                                 <li class="has-sub"><a href="#">Automotive & Motorcycle </a>
@@ -426,7 +459,7 @@
                                                     <li><a href="shop.html">Sagittis Blandit</a></li>
                                                 </ul>
                                                 <!-- category submenu end-->
-                                            </li>
+                                            </li>                                            
                                             <li><a href="shop.html">Sagittis Eget</a></li>
                                             <li><a href="shop.html">Sagittis Eget</a></li>
                                         </ul>
@@ -535,7 +568,7 @@
                                             </li>
                                             <!-- Single Column End -->
                                         </ul>
-                                        <!-- Vertical Mega-Menu End -->
+                                        <!-- Vertical Mega-Menu End --> 
                                     </li>
                                     <li><a href="shop.html"><span><img src="img/vertical-menu/4.png" alt="menu-icon"></span>Phones & Tablets<i class="fa fa-angle-right" aria-hidden="true"></i>
                                     </a>
@@ -618,7 +651,7 @@
                 </div>
                 <!-- Row End -->
             </div>
-            <!-- Container End -->
+            <!-- Container End -->           
         </div>
         <!-- Categorie Menu & Slider Area End Here -->
         <!-- Breadcrumb Start -->
@@ -794,7 +827,7 @@
                                             </div>
                                             <!-- Product Content End -->
                                         </div>
-                                        <!-- Single Product End -->
+                                        <!-- Single Product End -->  
                                         <!-- Single Product Start -->
                                         <div class="single-product single-product-sidebar">
                                             <!-- Product Image Start -->
@@ -812,7 +845,7 @@
                                             </div>
                                             <!-- Product Content End -->
                                         </div>
-                                        <!-- Single Product End -->
+                                        <!-- Single Product End --> 
                                         <!-- Single Product Start -->
                                         <div class="single-product single-product-sidebar">
                                             <!-- Product Image Start -->
@@ -830,7 +863,7 @@
                                             </div>
                                             <!-- Product Content End -->
                                         </div>
-                                        <!-- Single Product End -->
+                                        <!-- Single Product End --> 
                                         <!-- Single Product Start -->
                                         <div class="single-product single-product-sidebar">
                                             <!-- Product Image Start -->
@@ -848,7 +881,7 @@
                                             </div>
                                             <!-- Product Content End -->
                                         </div>
-                                        <!-- Single Product End -->
+                                        <!-- Single Product End -->                                        
                                     </div>
                                     <!-- Side Item End -->
                                     <!-- Side Item Start -->
@@ -870,7 +903,7 @@
                                             </div>
                                             <!-- Product Content End -->
                                         </div>
-                                        <!-- Single Product End -->
+                                        <!-- Single Product End -->  
                                         <!-- Single Product Start -->
                                         <div class="single-product single-product-sidebar">
                                             <!-- Product Image Start -->
@@ -888,7 +921,7 @@
                                             </div>
                                             <!-- Product Content End -->
                                         </div>
-                                        <!-- Single Product End -->
+                                        <!-- Single Product End --> 
                                         <!-- Single Product Start -->
                                         <div class="single-product single-product-sidebar">
                                             <!-- Product Image Start -->
@@ -906,7 +939,7 @@
                                             </div>
                                             <!-- Product Content End -->
                                         </div>
-                                        <!-- Single Product End -->
+                                        <!-- Single Product End --> 
                                         <!-- Single Product Start -->
                                         <div class="single-product single-product-sidebar">
                                             <!-- Product Image Start -->
@@ -924,7 +957,7 @@
                                             </div>
                                             <!-- Product Content End -->
                                         </div>
-                                        <!-- Single Product End -->
+                                        <!-- Single Product End -->                                        
                                     </div>
                                     <!-- Side Item End -->
                                     <!-- Side Item Start -->
@@ -946,7 +979,7 @@
                                             </div>
                                             <!-- Product Content End -->
                                         </div>
-                                        <!-- Single Product End -->
+                                        <!-- Single Product End -->  
                                         <!-- Single Product Start -->
                                         <div class="single-product single-product-sidebar">
                                             <!-- Product Image Start -->
@@ -965,7 +998,7 @@
                                             </div>
                                             <!-- Product Content End -->
                                         </div>
-                                        <!-- Single Product End -->
+                                        <!-- Single Product End --> 
                                         <!-- Single Product Start -->
                                         <div class="single-product single-product-sidebar">
                                             <!-- Product Image Start -->
@@ -983,7 +1016,7 @@
                                             </div>
                                             <!-- Product Content End -->
                                         </div>
-                                        <!-- Single Product End -->
+                                        <!-- Single Product End --> 
                                         <!-- Single Product Start -->
                                         <div class="single-product single-product-sidebar">
                                             <!-- Product Image Start -->
@@ -1001,12 +1034,12 @@
                                             </div>
                                             <!-- Product Content End -->
                                         </div>
-                                        <!-- Single Product End -->
+                                        <!-- Single Product End -->                                        
                                     </div>
                                     <!-- Side Item End -->
                                 </div>
                             </div>
-                            <!-- Product Top End -->
+                            <!-- Product Top End -->                            
                             <!-- Single Banner Start -->
                             <div class="col-img">
                                 <a href="shop.html"><img src="img/banner/banner-sidebar.jpg" alt="slider-banner"></a>
@@ -1059,15 +1092,16 @@
                             <!-- Grid & List Main Area End -->
                             <div class="tab-content fix">
                                 <div id="grid-view" class="tab-pane fade show active">
-                                    <div id="products" class="row">
+                                    <div id="products-page" class="row">
 
                                     </div>
+                                    <!-- Row End -->
                                 </div>
                                 <!-- #grid view End -->
                                 <div id="list-view" class="tab-pane fade">
                                     <!-- Single Product Start -->
-                                    <div class="single-product">
-                                        <div class="row">
+                                    <div class="single-product"> 
+                                        <div class="row">        
                                             <!-- Product Image Start -->
                                             <div class="col-lg-4 col-md-5 col-sm-12">
                                                 <div class="pro-img">
@@ -1102,8 +1136,8 @@
                                     </div>
                                     <!-- Single Product End -->
                                     <!-- Single Product Start -->
-                                    <div class="single-product">
-                                        <div class="row">
+                                    <div class="single-product"> 
+                                        <div class="row">        
                                             <!-- Product Image Start -->
                                             <div class="col-lg-4 col-md-5 col-sm-12">
                                                 <div class="pro-img">
@@ -1137,8 +1171,8 @@
                                     </div>
                                     <!-- Single Product End -->
                                     <!-- Single Product Start -->
-                                    <div class="single-product">
-                                        <div class="row">
+                                    <div class="single-product"> 
+                                        <div class="row">        
                                             <!-- Product Image Start -->
                                             <div class="col-lg-4 col-md-5 col-sm-12">
                                                 <div class="pro-img">
@@ -1173,8 +1207,8 @@
                                     </div>
                                     <!-- Single Product End -->
                                     <!-- Single Product Start -->
-                                    <div class="single-product">
-                                        <div class="row">
+                                    <div class="single-product"> 
+                                        <div class="row">        
                                             <!-- Product Image Start -->
                                             <div class="col-lg-4 col-md-5 col-sm-12">
                                                 <div class="pro-img">
@@ -1208,8 +1242,8 @@
                                     </div>
                                     <!-- Single Product End -->
                                     <!-- Single Product Start -->
-                                    <div class="single-product">
-                                        <div class="row">
+                                    <div class="single-product"> 
+                                        <div class="row">        
                                             <!-- Product Image Start -->
                                             <div class="col-lg-4 col-md-5 col-sm-12">
                                                 <div class="pro-img">
@@ -1245,14 +1279,11 @@
                                 </div>
                                 <!-- #list view End -->
                                 <div class="pro-pagination">
-                                    <ul class="blog-pagination">
-                                        <li class="active"><a href="#">1</a></li>
-                                        <li><a href="#">2</a></li>
-                                        <li><a href="#">3</a></li>
-                                        <li><a href="#"><i class="fa fa-angle-right"></i></a></li>
-                                    </ul>
-                                    <div class="product-pagination">
-                                        <span class="grid-item-list">Showing 1 to 12 of 51 (5 Pages)</span>
+                                    <ul id="pagination" class="blog-pagination">
+
+                                    </ul>                                    
+                                    <div id="infoPage" class="product-pagination">
+
                                     </div>
                                 </div>
                                 <!-- Product Pagination Info -->
@@ -1340,8 +1371,8 @@
                                  </form>
                              </div>
                          </div>
-                    </div>
-                    <!-- Signup-Newsletter End -->
+                    </div> 
+                    <!-- Signup-Newsletter End -->                   
                     <div class="row">
                         <!-- Single Footer Start -->
                         <div class="col-lg-2 col-md-4 col-sm-6">
@@ -1388,7 +1419,7 @@
                                         <li><a href="#">Gift Certificates</a></li>
                                         <li><a href="#">Affiliate</a></li>
                                         <li><a href="#">Specials</a></li>
-                                        <li><a href="#">Site Map</a></li>
+                                        <li><a href="#">Site Map</a></li>      
                                     </ul>
                                 </div>
                             </div>
@@ -1425,7 +1456,7 @@
                                     </ul>
                                     <div class="payment mt-25 bdr-top pt-30">
                                         <a href="#"><img class="img" src="img/payment/1.png" alt="payment-image"></a>
-                                    </div>
+                                    </div>                                   
                                 </div>
                             </div>
                         </div>
@@ -1457,7 +1488,7 @@
             <div class="footer-bottom pb-30">
                 <div class="container">
 
-                     <div class="copyright-text text-center">
+                     <div class="copyright-text text-center">                    
                         <p>Copyright © 2018 <a target="_blank" href="#">Truemart</a> All Rights Reserved.</p>
                      </div>
                 </div>
