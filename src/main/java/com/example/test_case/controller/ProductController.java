@@ -11,9 +11,10 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 
+
 import java.util.List;
 import java.util.Optional;
-import java.util.*;
+
 
 
 @RestController
@@ -29,9 +30,7 @@ public class ProductController {
 
     @GetMapping
     private ResponseEntity<List<DTOProduct>> findAll() {
-        ArrayList<DTOProduct> products = (ArrayList<DTOProduct>) iProduct.getAllDTO();
-        Collections.reverse(products);
-        return new ResponseEntity<>(products, HttpStatus.OK);
+        return new ResponseEntity<>(iProduct.getAllDTO(), HttpStatus.OK);
     }
 
     @GetMapping("/new-product")

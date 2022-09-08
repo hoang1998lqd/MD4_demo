@@ -37,6 +37,8 @@
 
     <!-- Modernizer js -->
     <script src="js/vendor/modernizr-3.5.0.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+
 </head>
 
 <body>
@@ -671,8 +673,8 @@
                 <div class="row">
                     <div class="col-sm-12">
                         <div class="register-title">
-                            <h3 class="mb-10">REGISTER ACCOUNT</h3>
-                            <p class="mb-10">If you already have an account with us, please login at the login page.</p>
+                            <h3 class="mb-10">Tạo tài khoản mới</h3>
+                            <p class="mb-10">Đăng ký tài khoản mới trước khi mua hàng</p>
                         </div>
                     </div>
                 </div>
@@ -681,62 +683,66 @@
                     <div class="col-sm-12">
                         <form class="form-register" action="#">
                             <fieldset>
-                                <legend>Your Personal Details</legend>
+                                <legend>Thông tin cá nhân</legend>
                                 <div class="form-group d-md-flex align-items-md-center">
-                                    <label class="control-label col-md-2" for="f-name"><span class="require">*</span>First Name</label>
+                                    <label class="control-label col-md-2" for="name"><span class="require">*</span>Họ và tên</label>
                                     <div class="col-md-10">
-                                        <input type="text" class="form-control" id="f-name" placeholder="First Name">
+                                        <input type="text" class="form-control" id="name" placeholder="Nhập tên">
                                     </div>
                                 </div>
                                 <div class="form-group d-md-flex align-items-md-center">
-                                    <label class="control-label col-md-2" for="l-name"><span class="require">*</span>Last Name</label>
+                                    <label class="control-label col-md-2" for="address"><span class="require">*</span>Địa chỉ</label>
                                     <div class="col-md-10">
-                                        <input type="text" class="form-control" id="l-name" placeholder="Last Name">
+                                        <input type="text" class="form-control" id="address" placeholder="Nhập địa chỉ">
                                     </div>
                                 </div>
                                 <div class="form-group d-md-flex align-items-md-center">
-                                    <label class="control-label col-md-2" for="email"><span class="require">*</span>Enter you email address here...</label>
+                                    <label class="control-label col-md-2" for="email"><span class="require">*</span>Email</label>
                                     <div class="col-md-10">
                                         <input type="email" class="form-control" id="email" placeholder="Enter you email address here...">
                                     </div>
                                 </div>
                                 <div class="form-group d-md-flex align-items-md-center">
-                                    <label class="control-label col-md-2" for="number"><span class="require">*</span>Telephone</label>
+                                    <label class="control-label col-md-2" for="number"><span >*</span>Số điện thoại</label>
                                     <div class="col-md-10">
-                                        <input type="email" class="form-control" id="number" placeholder="Telephone">
+                                        <input type="text" class="form-control" id="number" placeholder="Nhập số điện thoại">
                                     </div>
                                 </div>
                             </fieldset>
                             <fieldset>
-                                <legend>Your Password</legend>
+                                <legend>Mật khẩu</legend>
                                 <div class="form-group d-md-flex align-items-md-center">
-                                    <label class="control-label col-md-2" for="pwd"><span class="require">*</span>Password:</label>
+                                    <label class="control-label col-md-2" for="pwd"><span class="require">*</span>Mật khẩu:</label>
                                     <div class="col-md-10">
-                                        <input type="password" class="form-control" id="pwd" placeholder="Password">
+                                        <input type="password" class="form-control" id="pwd" placeholder="Nhập mật khẩu">
                                     </div>
                                 </div>
                                 <div class="form-group d-md-flex align-items-md-center">
-                                    <label class="control-label col-md-2" for="pwd-confirm"><span class="require">*</span>Confirm Password</label>
+                                    <label class="control-label col-md-2" for="pwd-confirm"><span class="require">*</span>Nhập lại mật khẩu</label>
                                     <div class="col-md-10">
-                                        <input type="password" class="form-control" id="pwd-confirm" placeholder="Confirm password">
+                                        <input type="password" class="form-control" id="pwd-confirm" placeholder="Nhập mật khẩu">
                                     </div>
                                 </div>
                             </fieldset>
-                            <fieldset class="newsletter-input">
-                                <legend>Newsletter</legend>
-                                <div class="form-group d-md-flex align-items-md-center">
-                                    <label class="col-md-2 control-label">Subscribe</label>
-                                    <div class="col-md-10 radio-button">
-                                         <label class="radio-inline"><input type="radio" name="optradio">Yes</label>
-                                         <label class="radio-inline"><input type="radio" name="optradio">No</label>
-                                    </div>
-                                </div>
-                            </fieldset>
+<!--                            <fieldset class="newsletter-input">-->
+<!--                                <legend>Newsletter</legend>-->
+<!--                                <div class="form-group d-md-flex align-items-md-center">-->
+<!--                                    <label class="col-md-2 control-label">Subscribe</label>-->
+<!--                                    <div class="col-md-10 radio-button">-->
+<!--                                         <label class="radio-inline"><input type="radio" name="optradio">Yes</label>-->
+<!--                                         <label class="radio-inline"><input type="radio" name="optradio">No</label>-->
+<!--                                    </div>-->
+<!--                                </div>-->
+<!--                            </fieldset>-->
                             <div class="terms">
                                 <div class="float-md-right">
-                                    <span>I have read and agree to the <a href="#" class="agree"><b>Privacy Policy</b></a></span>
+                                    <span>Tôi đồng ý với các điều khoản <a href="#" class="agree"><b>Privacy Policy</b></a></span>
                                     <input type="checkbox" name="agree" value="1"> &nbsp;
-                                    <input type="submit" value="Continue" class="return-customer-btn">
+                                    <input onclick="createCustomer()" type="submit" value="Tạo tài khoản" class="return-customer-btn">
+                                    <br>
+                                    <div align="center" id="messageCreate">
+
+                                    </div>
                                 </div>
                             </div>
                         </form>
@@ -1082,6 +1088,7 @@
     <script src="js/plugins.js"></script>
     <!-- Main activaion js -->
     <script src="js/main.js"></script>
+    <script src="js/register.js"></script>
 </body>
 
 </html>

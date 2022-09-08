@@ -37,6 +37,8 @@
 
     <!-- Modernizer js -->
     <script src="js/vendor/modernizr-3.5.0.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+
 </head>
 
 <body>
@@ -686,8 +688,8 @@
                     <div class="col-md-6">
                         <div class="well">
                             <div class="return-customer">
-                                <h3 class="mb-10 custom-title">returnng customer</h3>
-                                <p class="mb-10"><strong>I am a returning customer</strong></p>
+                                <h3 class="mb-10 custom-title">Đăng nhập</h3>
+                                <p class="mb-10"><strong></strong></p>
                                 <form action="#">
                                     <div class="form-group">
                                         <label>Email</label>
@@ -698,7 +700,7 @@
                                         <input type="text" name="pass" placeholder="Password" id="input-password" class="form-control">
                                     </div>
                                     <p class="lost-password"><a href="forgot-password.html">Forgot password?</a></p>
-                                    <input type="submit" value="Login" class="return-customer-btn">
+                                    <input onclick="loginCustomer()" type="submit" value="Đăng nhập" class="return-customer-btn">
                                 </form>
                             </div>
                         </div>
@@ -1045,6 +1047,7 @@
     <script src="js/plugins.js"></script>
     <!-- Main activaion js -->
     <script src="js/main.js"></script>
+    <script src="js/login.js"></script>
 </body>
 
 </html>
