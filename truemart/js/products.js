@@ -28,13 +28,75 @@ function getProducts() {
                 localStorage.setItem(data[i].product.id, data[i].imageURLS[1])
             }
             loadTable(data)
+            pagination(data)
         }
     })
 }
 
+let perPage = 6;
+let currenPage = 1;
+let start = 0;
+let end = perPage;
+let totalPage = 5;
+
+let btnNext = document.querySelector('.btn-next');
+let btnPrev = document.querySelector('.btn-previous');
+
+function pagination(list) {
+    let content = ""
+    content += "<li><a onclick='previousPage()' class='btn-previous'><i class='fa fa-angle-left'></i></a></li>"
+    for (let i = 1; i <= Math.ceil((list.length)/perPage); i++) {
+        content += "<li><a onclick='nextNumber(" + i + ")' >" + i + "</a></li>"
+    }
+    content += " <li><a onclick='nextPage()' class='btn-next'><i class='fa fa-angle-right'></i></a></li>"
+    document.getElementById("pagination").innerHTML = content
+    infoPage(currenPage)
+}
+
+function infoPage(text) {
+    document.getElementById("infoPage").innerHTML = "<span class=\'grid-item-list\'>" + "Trang " + text + "(Tổng: " + totalPage + " trang) " + " </span>"
+    // "Trang" + text + "(Tổng: " + totalPage + " trang)"
+}
+
+
+
+nextNumber(1)
+
+function nextNumber(number) {
+    currenPage = number;
+    start = (currenPage - 1) * perPage
+    end = currenPage * perPage
+    getProducts()
+    infoPage(number)
+
+}
+
+function nextPage() {
+    currenPage++;
+    if (currenPage > totalPage) {
+        currenPage = totalPage
+    }
+    start = (currenPage - 1) * perPage
+    end = currenPage * perPage
+    getProducts()
+    infoPage(currenPage)
+}
+
+function previousPage() {
+    currenPage--;
+    if (currenPage <= 1) {
+        currenPage = 1
+    }
+    start = (currenPage - 1) * perPage
+    end = currenPage * perPage
+    getProducts()
+    infoPage(currenPage)
+}
+
+
 function loadTable(list)    {
     let content = "";
-    for (let i = (list.length - 1); 0 <= i; i--) {
+    for (let i = start; i < end; i++) {
         if (list[i].product.status !== 0) {
             content += " <div class='col-lg-4 col-md-4 col-sm-6 col-6'>\n" +
                 "                                            <div class=\'single-product\'>\n" +
@@ -67,7 +129,7 @@ function loadTable(list)    {
                 "                                                </div> "
         }
     }
-    document.getElementById("products").innerHTML = content;
+    document.getElementById("products-page").innerHTML = content;
 }
 
 function changePrice(n){
