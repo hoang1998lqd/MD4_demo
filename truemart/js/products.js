@@ -347,7 +347,36 @@ function search() {
             }})
 }
 
-
+function listCategory(){
+    $.ajax({
+        type:"GET",
+        url:"http://localhost:8081/api/categories",
+        success: function (listCategory){
+            result = ""
+            for (let i = 0; i < listCategory.length; i++) {
+                result += "<option value="+listCategory[i].id+">"+ listCategory[i].name +"</option>"
+            }
+            document.getElementById("category").innerHTML = result;
+            document.getElementById("category1").innerHTML = result;
+        }
+    })
+}
+function listCategory1(){
+    $.ajax({
+        type:"GET",
+        url:"http://localhost:8081/api/categories",
+        success: function (listCategory){
+            result = ""
+            for (let i = 0; i < listCategory.length; i++) {
+                result+="<li class=\"nav-item me-2\">\n" +
+                    "                        <a class=\"btn btn-outline-primary border-2 active\" data-bs-toggle=\"pill\"\n" +
+                    "                           href=\"#tab-1\" value="+listCategory[i].id +">"+ listCategory[i].name +"</a>\n" +
+                    "                    </li>"
+            }
+            document.getElementById("category3").innerHTML = result;
+        }
+    })
+}
 
 function searchCategory(a){
     $.ajax({
